@@ -589,3 +589,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a189ae20a339004fafdee90da59c8d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: 3157339553430795240}
+  anim: {fileID: 239119541289922885}
+  SR: {fileID: 6823269281878724553}
+  PV: {fileID: 4586744039067227401}
+  NickNameText: {fileID: 1042387049395020073}
+  HealthImage: {fileID: 1749191909453851182}
