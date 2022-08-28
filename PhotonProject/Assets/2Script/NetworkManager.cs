@@ -43,7 +43,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void Spawn()
     {
-        PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
+        PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f,19f),7,0), Quaternion.identity);
         RespawnPanel.SetActive(false);
     }
     void Update()

@@ -11,6 +11,7 @@
 -a="C:\Users\angelwing\PhotonGame\PhotonProject\Library\PlayerScriptAssemblies\Unity.Mathematics.dll"
 -a="C:\Users\angelwing\PhotonGame\PhotonProject\Library\PlayerScriptAssemblies\PhotonUnityNetworking.dll"
 -a="C:\Users\angelwing\PhotonGame\PhotonProject\Library\PlayerScriptAssemblies\Unity.2D.IK.Runtime.dll"
+-a="C:\Users\angelwing\PhotonGame\PhotonProject\Library\PlayerScriptAssemblies\Cinemachine.dll"
 -a="C:\Users\angelwing\PhotonGame\PhotonProject\Library\PlayerScriptAssemblies\Unity.2D.Animation.Triangle.Runtime.dll"
 -a="C:\Users\angelwing\PhotonGame\PhotonProject\Library\PlayerScriptAssemblies\Unity.2D.Animation.Runtime.dll"
 -a="C:\Users\angelwing\PhotonGame\PhotonProject\Library\PlayerScriptAssemblies\PhotonUnityNetworking.Demos.dll"
