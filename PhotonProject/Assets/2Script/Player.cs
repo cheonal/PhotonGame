@@ -15,6 +15,9 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public Text NickNameText;
     public Image HealthImage;
 
+    public Vector3 Playerdir;
+    Camera cam;
+
     bool isGround;
     Vector3 curPos;
 
@@ -31,9 +34,13 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             CM.LookAt = transform;  
         }
     }
-
+    void Start()
+    {
+        cam = Camera.main;
+    }
     void Update()
     {
+        Playerdir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         if (PV.IsMine)
         {
             float axis = Input.GetAxisRaw("Horizontal");
@@ -56,12 +63,22 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             if (Input.GetKeyDown(KeyCode.UpArrow) && isGround) PV.RPC("JumpRPC", RpcTarget.All);
 
             //총알 발사
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetMouseButtonDown(0))
             {
                 PhotonNetwork.Instantiate("Bullet", transform.position + new Vector3(SR.flipX ? -0.4f : 0.4f, -0.11f, 0), Quaternion.identity)
-                    .GetComponent<PhotonView>().RPC("DirRPC", RpcTarget.All, SR.flipX ? -1 : 1);
+                 .GetComponent<PhotonView>().RPC("DirRPC", RpcTarget.All, Playerdir);
                 anim.SetTrigger("shot");
             }
+
+            /* if (Input.GetKeyDown(KeyCode.Space))
+             {
+                 //   PhotonNetwork.Instantiate("Bullet", transform.position + new Vector3(SR.flipX ? -0.4f : 0.4f, -0.11f, 0), Quaternion.identity)
+                 //     .GetComponent<PhotonView>().RPC("DirRPC", RpcTarget.All, SR.flipX ? -1 : 1);
+                 PhotonNetwork.Instantiate("Bullet", dir + new Vector3(SR.flipX ? -0.4f : 0.4f, -0.11f, 0), Quaternion.identity)
+     .GetComponent<PhotonView>().RPC("DirRPC", RpcTarget.All, SR.flipX ? -1 : 1);
+                 anim.SetTrigger("shot");*/
+
+
         }
         //부드럽게 위치동기화 
         else if ((transform.position - curPos).sqrMagnitude >= 100) //많이 벗어났을때 순간이동하는 식으로 위치 조정

@@ -2790,7 +2790,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCC29\uC9F1\uC8FD\uC9F1!"
+  m_Text: You Died!
 --- !u!222 &1687635725
 CanvasRenderer:
   m_ObjectHideFlags: 0

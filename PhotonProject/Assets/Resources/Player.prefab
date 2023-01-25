@@ -595,3 +595,4 @@ MonoBehaviour:
   PV: {fileID: 4586744039067227401}
   NickNameText: {fileID: 1042387049395020073}
   HealthImage: {fileID: 1749191909453851182}
+  Playerdir: {x: 0, y: 0, z: 0}

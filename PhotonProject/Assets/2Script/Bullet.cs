@@ -6,7 +6,8 @@ using Photon.Realtime;
 public class Bullet : MonoBehaviourPunCallbacks
 {
     public PhotonView PV;
-    int dir;
+    public Vector3 dir;
+    public float BulletSpeed;
 
     void Start()
     {
@@ -14,7 +15,8 @@ public class Bullet : MonoBehaviourPunCallbacks
     }
     void Update()
     {
-        transform.Translate(Vector3.right * 7 * Time.deltaTime * dir);
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + dir , BulletSpeed * Time.deltaTime);
+      //  transform.Translate(dir * BulletSpeed * Time.deltaTime);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,7 +31,7 @@ public class Bullet : MonoBehaviourPunCallbacks
         }
     }
     [PunRPC]
-    void DirRPC(int dir)
+    void DirRPC(Vector3 dir)
     {
         this.dir = dir;
     }
