@@ -15,6 +15,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public Text NickNameText;
     public Image HealthImage;
 
+    public Transform FirePoint;
     public Vector3 Playerdir;
     Camera cam;
 
@@ -41,6 +42,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     void Update()
     {
         Playerdir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+      //  this.transform.rotation = Quaternion.AngleAxis(angle , Vector3.forward);
         if (PV.IsMine)
         {
             float axis = Input.GetAxisRaw("Horizontal");
@@ -60,12 +62,12 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             isGround = Physics2D.OverlapCircle
                 ((Vector2)transform.position + new Vector2(0, -0.5f), 0.07f, 1 << LayerMask.NameToLayer("Ground"));
             anim.SetBool("jump", !isGround);
-            if (Input.GetKeyDown(KeyCode.UpArrow) && isGround) PV.RPC("JumpRPC", RpcTarget.All);
+            if (Input.GetKeyDown(KeyCode.Space) && isGround) PV.RPC("JumpRPC", RpcTarget.All);
 
             //ÃÑ¾Ë ¹ß»ç
             if (Input.GetMouseButtonDown(0))
             {
-                PhotonNetwork.Instantiate("Bullet", transform.position + new Vector3(SR.flipX ? -0.4f : 0.4f, -0.11f, 0), Quaternion.identity)
+                PhotonNetwork.Instantiate("Bullet", FirePoint.position, Quaternion.identity)
                  .GetComponent<PhotonView>().RPC("DirRPC", RpcTarget.All, Playerdir);
                 anim.SetTrigger("shot");
             }
