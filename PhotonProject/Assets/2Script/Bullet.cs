@@ -17,12 +17,6 @@ public class Bullet : MonoBehaviourPunCallbacks
         rigid.AddForce(transform.up * BulletSpeed, ForceMode2D.Impulse);
         Destroy(gameObject, 3.5f);
     }
-    void Update()
-    {
-
-
-        //transform.Translate(dir * BulletSpeed * Time.deltaTime);
-    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Ground")

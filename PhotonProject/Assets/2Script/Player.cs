@@ -19,6 +19,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public Vector3 Playerdir;
     Camera cam;
 
+    public int JumpCount;
     bool isGround;
     Vector3 curPos;
 
@@ -42,7 +43,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     void Update()
     {
         Playerdir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-      //  this.transform.rotation = Quaternion.AngleAxis(angle , Vector3.forward);
         if (PV.IsMine)
         {
             float axis = Input.GetAxisRaw("Horizontal");
@@ -62,24 +62,26 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             isGround = Physics2D.OverlapCircle
                 ((Vector2)transform.position + new Vector2(0, -0.5f), 0.07f, 1 << LayerMask.NameToLayer("Ground"));
             anim.SetBool("jump", !isGround);
-            if (Input.GetKeyDown(KeyCode.Space) && isGround) PV.RPC("JumpRPC", RpcTarget.All);
+            if (isGround)
+                JumpCount = 2;
+            if (Input.GetKeyDown(KeyCode.Space) && JumpCount > 0)
+            {
+                JumpCount--;
+                PV.RPC("JumpRPC", RpcTarget.All);
+            }
 
             //총알 발사
             if (Input.GetMouseButtonDown(0))
             {
-                PhotonNetwork.Instantiate("Bullet", FirePoint.position, Quaternion.identity)
+                if (Playerdir.x < 0)
+                    SR.flipX = true;
+                else
+                    SR.flipX = false;
+
+                PhotonNetwork.Instantiate("Bullet", transform.position + new Vector3(SR.flipX ? -0.4f : 0.4f, -0.11f, 0), Quaternion.identity)
                  .GetComponent<PhotonView>().RPC("DirRPC", RpcTarget.All, Playerdir);
                 anim.SetTrigger("shot");
             }
-
-            /* if (Input.GetKeyDown(KeyCode.Space))
-             {
-                 //   PhotonNetwork.Instantiate("Bullet", transform.position + new Vector3(SR.flipX ? -0.4f : 0.4f, -0.11f, 0), Quaternion.identity)
-                 //     .GetComponent<PhotonView>().RPC("DirRPC", RpcTarget.All, SR.flipX ? -1 : 1);
-                 PhotonNetwork.Instantiate("Bullet", dir + new Vector3(SR.flipX ? -0.4f : 0.4f, -0.11f, 0), Quaternion.identity)
-     .GetComponent<PhotonView>().RPC("DirRPC", RpcTarget.All, SR.flipX ? -1 : 1);
-                 anim.SetTrigger("shot");*/
-
 
         }
         //부드럽게 위치동기화 

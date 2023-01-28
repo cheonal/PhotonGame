@@ -169,4 +169,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PV: {fileID: 5702529725756995577}
   dir: {x: 0, y: 0, z: 0}
-  BulletSpeed: 20
+  BulletSpeed: 10

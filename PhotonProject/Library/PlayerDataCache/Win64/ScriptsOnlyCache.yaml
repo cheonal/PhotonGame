@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - Bullet
     - NetworkManager
     - Player
+    - Test
     Cinemachine.dll:
     - Cinemachine.CinemachineBrain
     - Cinemachine.CinemachineConfiner
@@ -92,6 +93,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
+    - Class: 58
+      Script: {instanceID: 0}
     - Class: 60
       Script: {instanceID: 0}
     - Class: 61
@@ -123,69 +126,71 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1478}
     - Class: 114
-      Script: {instanceID: 1616}
+      Script: {instanceID: 1618}
     - Class: 114
-      Script: {instanceID: 1806}
+      Script: {instanceID: 1808}
     - Class: 114
-      Script: {instanceID: 1848}
+      Script: {instanceID: 1850}
     - Class: 114
-      Script: {instanceID: 1854}
+      Script: {instanceID: 1856}
     - Class: 114
-      Script: {instanceID: 2474}
+      Script: {instanceID: 2476}
     - Class: 114
-      Script: {instanceID: 2542}
+      Script: {instanceID: 2544}
     - Class: 114
-      Script: {instanceID: 2608}
+      Script: {instanceID: 2610}
     - Class: 114
-      Script: {instanceID: 2616}
+      Script: {instanceID: 2618}
     - Class: 114
-      Script: {instanceID: 2860}
+      Script: {instanceID: 2862}
     - Class: 114
-      Script: {instanceID: 2918}
+      Script: {instanceID: 2920}
     - Class: 114
-      Script: {instanceID: 2936}
+      Script: {instanceID: 2938}
     - Class: 114
-      Script: {instanceID: 3014}
+      Script: {instanceID: 3016}
     - Class: 114
-      Script: {instanceID: 3124}
+      Script: {instanceID: 3126}
     - Class: 114
-      Script: {instanceID: 3224}
+      Script: {instanceID: 3226}
     - Class: 114
-      Script: {instanceID: 3244}
+      Script: {instanceID: 3246}
     - Class: 114
-      Script: {instanceID: 3388}
+      Script: {instanceID: 3390}
     - Class: 114
-      Script: {instanceID: 3450}
+      Script: {instanceID: 3452}
     - Class: 114
-      Script: {instanceID: 3670}
-    - Class: 114
-      Script: {instanceID: 3680}
+      Script: {instanceID: 3672}
     - Class: 114
       Script: {instanceID: 3682}
     - Class: 114
-      Script: {instanceID: 3810}
+      Script: {instanceID: 3684}
     - Class: 114
-      Script: {instanceID: 3820}
+      Script: {instanceID: 3812}
     - Class: 114
-      Script: {instanceID: 4176}
+      Script: {instanceID: 3822}
     - Class: 114
-      Script: {instanceID: 4444}
+      Script: {instanceID: 4178}
     - Class: 114
-      Script: {instanceID: 4512}
+      Script: {instanceID: 4194}
     - Class: 114
-      Script: {instanceID: 4972}
+      Script: {instanceID: 4448}
     - Class: 114
-      Script: {instanceID: 4978}
+      Script: {instanceID: 4516}
     - Class: 114
-      Script: {instanceID: 5224}
+      Script: {instanceID: 4976}
     - Class: 114
-      Script: {instanceID: 5294}
+      Script: {instanceID: 4982}
     - Class: 114
-      Script: {instanceID: 5922}
+      Script: {instanceID: 5228}
     - Class: 114
-      Script: {instanceID: 6124}
+      Script: {instanceID: 5298}
     - Class: 114
-      Script: {instanceID: 6624}
+      Script: {instanceID: 5926}
+    - Class: 114
+      Script: {instanceID: 6128}
+    - Class: 114
+      Script: {instanceID: 6628}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -553,7 +558,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomAutoCleanupProperty
   - hash:
       serializedVersion: 2
-      Hash: b38abdbe751c749edfdb2013f71384d9
+      Hash: 3b9c1572cec6ca2f5c9e48e78cdc5af9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -607,7 +612,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 5a61dadeddeb6b88d4ab23f3f0fa8379
+      Hash: 956707423c633ce1f079a9b352cb2fd7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Bullet
@@ -1145,6 +1150,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Outline
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Test
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f

@@ -9,8 +9,6 @@ public class Test : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -18,6 +16,5 @@ public class Test : MonoBehaviour
             Debug.Log("11");
             rigid.AddForce(transform.up * 10 , ForceMode2D.Impulse);
         }
-
     }
 }
