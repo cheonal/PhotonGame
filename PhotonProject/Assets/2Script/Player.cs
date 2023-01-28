@@ -8,6 +8,7 @@ using Cinemachine;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
+    public static Player player;
     public Rigidbody2D rigid;
     public Animator anim;
     public SpriteRenderer SR;
@@ -20,11 +21,13 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     Camera cam;
 
     public int JumpCount;
+    public bool IsItem;
     bool isGround;
     Vector3 curPos;
 
     void Awake()
     {
+        player = this;
         NickNameText.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
         NickNameText.color = PV.IsMine ? Color.green : Color.red;
 
@@ -46,7 +49,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (PV.IsMine)
         {
             float axis = Input.GetAxisRaw("Horizontal");
-            rigid.velocity = new Vector2(4 * axis, rigid.velocity.y);
+            rigid.velocity = new Vector2(IsItem ? 8 * axis : 4 * axis, rigid.velocity.y);
 
             if (axis != 0)
             {
@@ -93,8 +96,16 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
         }
-        
-            
+    }
+
+    public void GetItem()
+    {
+        IsItem = true;
+        Invoke("ItemOff", 5f);
+    }
+    void ItemOff()
+    {
+        IsItem = false;
     }
     [PunRPC]
     void FlipXRPC(float axix)

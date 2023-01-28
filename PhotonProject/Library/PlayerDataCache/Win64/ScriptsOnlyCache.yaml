@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Bullet
+    - Item
     - NetworkManager
     - Player
     - Test
@@ -21,6 +22,8 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
+    PhotonUnityNetworking.Editor.dll:
+    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonRigidbody2DView
@@ -32,6 +35,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
     - UnityEditor.Tilemaps.GridBrushEditor
@@ -126,53 +130,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1478}
     - Class: 114
-      Script: {instanceID: 1618}
+      Script: {instanceID: 1616}
     - Class: 114
-      Script: {instanceID: 1808}
+      Script: {instanceID: 1806}
     - Class: 114
-      Script: {instanceID: 1850}
+      Script: {instanceID: 1848}
     - Class: 114
-      Script: {instanceID: 1856}
+      Script: {instanceID: 1854}
     - Class: 114
-      Script: {instanceID: 2476}
+      Script: {instanceID: 2474}
     - Class: 114
-      Script: {instanceID: 2544}
+      Script: {instanceID: 2542}
     - Class: 114
-      Script: {instanceID: 2610}
+      Script: {instanceID: 2608}
     - Class: 114
-      Script: {instanceID: 2618}
+      Script: {instanceID: 2616}
     - Class: 114
-      Script: {instanceID: 2862}
+      Script: {instanceID: 2860}
     - Class: 114
-      Script: {instanceID: 2920}
+      Script: {instanceID: 2918}
     - Class: 114
-      Script: {instanceID: 2938}
+      Script: {instanceID: 2936}
     - Class: 114
-      Script: {instanceID: 3016}
+      Script: {instanceID: 3014}
     - Class: 114
-      Script: {instanceID: 3126}
+      Script: {instanceID: 3124}
     - Class: 114
-      Script: {instanceID: 3226}
+      Script: {instanceID: 3224}
     - Class: 114
-      Script: {instanceID: 3246}
+      Script: {instanceID: 3244}
     - Class: 114
-      Script: {instanceID: 3390}
+      Script: {instanceID: 3388}
     - Class: 114
-      Script: {instanceID: 3452}
+      Script: {instanceID: 3450}
     - Class: 114
-      Script: {instanceID: 3672}
+      Script: {instanceID: 3670}
+    - Class: 114
+      Script: {instanceID: 3680}
     - Class: 114
       Script: {instanceID: 3682}
     - Class: 114
-      Script: {instanceID: 3684}
+      Script: {instanceID: 3810}
     - Class: 114
-      Script: {instanceID: 3812}
+      Script: {instanceID: 3820}
     - Class: 114
-      Script: {instanceID: 3822}
+      Script: {instanceID: 4176}
     - Class: 114
-      Script: {instanceID: 4178}
+      Script: {instanceID: 4192}
     - Class: 114
-      Script: {instanceID: 4194}
+      Script: {instanceID: 4282}
     - Class: 114
       Script: {instanceID: 4448}
     - Class: 114
@@ -558,7 +564,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomAutoCleanupProperty
   - hash:
       serializedVersion: 2
-      Hash: 3b9c1572cec6ca2f5c9e48e78cdc5af9
+      Hash: ef76b5d3c2c733e7375af2d5761ada7f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -1062,7 +1068,7 @@ ScriptsOnlyBuild:
     className: CinemachineMixingCamera
   - hash:
       serializedVersion: 2
-      Hash: 5673b1a99350a7a4da925ef4d2fabe73
+      Hash: d498c22e52a9e13fc4edbd418ad09b1e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkManager
@@ -1198,6 +1204,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 5a61dadeddeb6b88d4ab23f3f0fa8379
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Item
   - hash:
       serializedVersion: 2
       Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5

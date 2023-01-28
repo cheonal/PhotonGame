@@ -598,3 +598,4 @@ MonoBehaviour:
   FirePoint: {fileID: 0}
   Playerdir: {x: 0, y: 0, z: 0}
   JumpCount: 2
+  IsItem: 0

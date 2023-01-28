@@ -7,12 +7,16 @@ using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+    public static NetworkManager networkManager;
     public InputField NickNameInput;
     public GameObject DisconnectPanel;
     public GameObject RespawnPanel;
 
+    public Transform [] ItemPos;
+    public int ItemCount = 2;
     void Awake()
     {
+        networkManager = this;
         Screen.SetResolution(960, 540, false);
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
@@ -32,6 +36,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         DisconnectPanel.SetActive(false);
         StartCoroutine("DestroyBullet");
         Spawn();
+        ItemSpawn();
     }
 
 
@@ -43,8 +48,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void Spawn()
     {
-        PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f,19f),7,0), Quaternion.identity);
+        PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f,33f),7,0), Quaternion.identity);
         RespawnPanel.SetActive(false);
+    }
+    public void ItemSpawn()
+    {
+        Invoke("ItemRealSpawn", 3f);
+    }
+    void ItemRealSpawn()
+    {
+        int ran = Random.Range(0, 5);
+        PhotonNetwork.Instantiate("Item", ItemPos[ran].position, Quaternion.identity);
     }
     void Update()
     {

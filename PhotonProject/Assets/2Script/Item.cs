@@ -6,16 +6,23 @@ using Photon.Realtime;
 public class Item : MonoBehaviourPunCallbacks
 {
     public PhotonView PV;
+    private Transform trs;
+    private void Start()
+    {
+        trs = transform;
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             PV.RPC("DestroyRPC", RpcTarget.AllBuffered);
+            NetworkManager.networkManager.ItemSpawn();
+            Player.player.GetItem();
         }
-      //  if (!PV.IsMine && collision.tag == "Player" && collision.GetComponent<PhotonView>().IsMine) // 느린쪽에 맞춰서 HIT판정
-     //   {
-     //       PV.RPC("DestroyRPC", RpcTarget.AllBuffered);
-     //   }
+        if (!PV.IsMine && collision.tag == "Player" && collision.GetComponent<PhotonView>().IsMine) // 느린쪽에 맞춰서 HIT판정
+        {
+            PV.RPC("DestroyRPC", RpcTarget.AllBuffered);
+        }
     }
     [PunRPC]
     void DestroyRPC()
