@@ -12,6 +12,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject DisconnectPanel;
     public GameObject RespawnPanel;
 
+    List<int> ItemList = new List<int>();
     public Transform [] ItemPos;
     public int ItemCount = 2;
     void Awake()
@@ -46,19 +47,29 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         foreach (GameObject Go in GameObject.FindGameObjectsWithTag("Bullet")) Go.GetComponent<PhotonView>().RPC("DestroyRPC", RpcTarget.AllBuffered);
     }
 
+    /// <summary>
+    /// 캐릭터 스폰 함수
+    /// </summary>
     public void Spawn()
     {
         PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f,33f),7,0), Quaternion.identity);
         RespawnPanel.SetActive(false);
     }
+    /// <summary>
+    /// 외부 클래스에서 받아오는 아이템 스폰 함수
+    /// </summary>
     public void ItemSpawn()
     {
-        Invoke("ItemRealSpawn", 3f);
-    }
-    void ItemRealSpawn()
-    {
         int ran = Random.Range(0, 5);
-        PhotonNetwork.Instantiate("Item", ItemPos[ran].position, Quaternion.identity);
+        ItemList.Add(ran);
+     //   if (ItemList.Contains(ran))
+      //  {
+     //       ran = Random.Range(0, 5);
+    //    }
+    //    else
+    //    {
+            PhotonNetwork.Instantiate("Item", ItemPos[ran].position, Quaternion.identity);
+    //    }
     }
     void Update()
     {

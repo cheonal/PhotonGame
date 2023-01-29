@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - NetworkManager
     - Player
     - Test
+    - Trap
     Cinemachine.dll:
     - Cinemachine.CinemachineBrain
     - Cinemachine.CinemachineConfiner
@@ -38,7 +39,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
-    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintPaletteClipboard
     - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
@@ -197,6 +197,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 6128}
     - Class: 114
       Script: {instanceID: 6628}
+    - Class: 114
+      Script: {instanceID: 27192}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -564,7 +566,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomAutoCleanupProperty
   - hash:
       serializedVersion: 2
-      Hash: ef76b5d3c2c733e7375af2d5761ada7f
+      Hash: d50ffaa44449dbf0286259b0ca83c781
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -1068,7 +1070,7 @@ ScriptsOnlyBuild:
     className: CinemachineMixingCamera
   - hash:
       serializedVersion: 2
-      Hash: d498c22e52a9e13fc4edbd418ad09b1e
+      Hash: b248c701b1a8efdbc9651216769788a8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkManager
@@ -2080,6 +2082,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit.Forms
     className: UserIdUiForm
+  - hash:
+      serializedVersion: 2
+      Hash: 5a61dadeddeb6b88d4ab23f3f0fa8379
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Trap
   platform: 19
   scenePathNames:
   - Assets/0Scenes/SampleScene.unity

@@ -595,7 +595,5 @@ MonoBehaviour:
   PV: {fileID: 4586744039067227401}
   NickNameText: {fileID: 1042387049395020073}
   HealthImage: {fileID: 1749191909453851182}
+  PlayerSpeedIncrease: 0
   FirePoint: {fileID: 0}
-  Playerdir: {x: 0, y: 0, z: 0}
-  JumpCount: 2
-  IsItem: 0

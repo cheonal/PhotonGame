@@ -13,17 +13,19 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public Animator anim;
     public SpriteRenderer SR;
     public PhotonView PV;
-    public Text NickNameText;
-    public Image HealthImage;
-
-    public Transform FirePoint;
-    public Vector3 Playerdir;
+    Vector3 curPos;
     Camera cam;
 
-    public int JumpCount;
-    public bool IsItem;
+    [Header("플레이어 인게임")]
+    public Text NickNameText;
+    public Image HealthImage;
+    public float PlayerSpeedIncrease;
+    public Transform FirePoint;
+    Vector3 Playerdir;
+    int JumpCount;
     bool isGround;
-    Vector3 curPos;
+    float PlayerSpeed;
+
 
     void Awake()
     {
@@ -36,11 +38,15 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             // 2D 카메라
             var CM = GameObject.Find("CMCamera").GetComponent<CinemachineVirtualCamera>();
             CM.Follow = transform;
-            CM.LookAt = transform;  
+            CM.LookAt = transform;
         }
     }
     void Start()
     {
+        PlayerSpeed = 4;
+        PlayerSpeedIncrease = 1;
+        JumpCount = 2;
+
         cam = Camera.main;
     }
     void Update()
@@ -49,7 +55,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (PV.IsMine)
         {
             float axis = Input.GetAxisRaw("Horizontal");
-            rigid.velocity = new Vector2(IsItem ? 8 * axis : 4 * axis, rigid.velocity.y);
+            rigid.velocity = new Vector2(PlayerSpeed * PlayerSpeedIncrease * axis, rigid.velocity.y);
 
             if (axis != 0)
             {
@@ -100,12 +106,12 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     public void GetItem()
     {
-        IsItem = true;
+        PlayerSpeedIncrease += 0.5f;
         Invoke("ItemOff", 5f);
     }
     void ItemOff()
     {
-        IsItem = false;
+        PlayerSpeedIncrease -= 0.5f;
     }
     [PunRPC]
     void FlipXRPC(float axix)

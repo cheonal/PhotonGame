@@ -6,11 +6,6 @@ using Photon.Realtime;
 public class Item : MonoBehaviourPunCallbacks
 {
     public PhotonView PV;
-    private Transform trs;
-    private void Start()
-    {
-        trs = transform;
-    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
