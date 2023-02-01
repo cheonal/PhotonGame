@@ -13,6 +13,7 @@ public class Item : MonoBehaviourPunCallbacks
             PV.RPC("DestroyRPC", RpcTarget.AllBuffered);
             NetworkManager.networkManager.ItemSpawn();
             Player.player.GetItem();
+            
         }
         if (!PV.IsMine && collision.tag == "Player" && collision.GetComponent<PhotonView>().IsMine) // 느린쪽에 맞춰서 HIT판정
         {

@@ -24,7 +24,9 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     Vector3 Playerdir;
     int JumpCount;
     bool isGround;
+    bool isItem;
     float PlayerSpeed;
+    public float ItemTimer;
 
 
     void Awake()
@@ -49,6 +51,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
         cam = Camera.main;
     }
+    public void PlayerSpeedCheck(float amount)
+    {
+        PlayerSpeedIncrease += amount;
+    }
     void Update()
     {
         Playerdir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -56,7 +62,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             float axis = Input.GetAxisRaw("Horizontal");
             rigid.velocity = new Vector2(PlayerSpeed * PlayerSpeedIncrease * axis, rigid.velocity.y);
-
             if (axis != 0)
             {
                 anim.SetBool("walk", true);
@@ -78,7 +83,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 JumpCount--;
                 PV.RPC("JumpRPC", RpcTarget.All);
             }
-
             //총알 발사
             if (Input.GetMouseButtonDown(0))
             {
@@ -86,12 +90,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                     SR.flipX = true;
                 else
                     SR.flipX = false;
-
                 PhotonNetwork.Instantiate("Bullet", transform.position + new Vector3(SR.flipX ? -0.4f : 0.4f, -0.11f, 0), Quaternion.identity)
                  .GetComponent<PhotonView>().RPC("DirRPC", RpcTarget.All, Playerdir);
                 anim.SetTrigger("shot");
             }
-
         }
         //부드럽게 위치동기화 
         else if ((transform.position - curPos).sqrMagnitude >= 100) //많이 벗어났을때 순간이동하는 식으로 위치 조정
@@ -102,17 +104,27 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
         }
+        if (isItem)
+        {
+            ItemTimer -= Time.deltaTime;
+            if(ItemTimer < 0)
+            {
+                isItem = false;
+                PlayerSpeedCheck(-0.5f);
+                return;
+            }
+        }
     }
-
     public void GetItem()
     {
-        PlayerSpeedIncrease += 0.5f;
-        Invoke("ItemOff", 5f);
+        if (isItem)
+            return;
+        isItem = true;
+        ItemTimer += 5;
+        PlayerSpeedCheck(0.5f);
     }
-    void ItemOff()
-    {
-        PlayerSpeedIncrease -= 0.5f;
-    }
+ 
+
     [PunRPC]
     void FlipXRPC(float axix)
     {

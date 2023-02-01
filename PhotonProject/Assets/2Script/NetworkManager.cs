@@ -14,7 +14,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     List<int> ItemList = new List<int>();
     public Transform [] ItemPos;
-    public int ItemCount = 2;
     void Awake()
     {
         networkManager = this;

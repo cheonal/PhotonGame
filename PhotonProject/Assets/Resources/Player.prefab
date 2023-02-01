@@ -597,3 +597,4 @@ MonoBehaviour:
   HealthImage: {fileID: 1749191909453851182}
   PlayerSpeedIncrease: 0
   FirePoint: {fileID: 0}
+  ItemTimer: 0

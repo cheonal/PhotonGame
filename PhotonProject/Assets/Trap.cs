@@ -12,12 +12,12 @@ public class Trap : MonoBehaviourPunCallbacks
         if (collision.tag == "Player")
         {
             collision.GetComponent<Player>().Hit();
-            Player.player.PlayerSpeedIncrease -= 0.5f;
-            Invoke("TrapOut", 2f);
+            Player.player.PlayerSpeedCheck(-0.5f);
+            Invoke("TrapOut", 1f);
         }
     }
     void TrapOut()
     {
-        Player.player.PlayerSpeedIncrease += 0.5f;
+        Player.player.PlayerSpeedCheck(+0.5f);
     }
 }
