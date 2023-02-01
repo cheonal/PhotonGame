@@ -117,10 +117,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     }
     public void GetItem()
     {
+        ItemTimer += 5;
         if (isItem)
             return;
         isItem = true;
-        ItemTimer += 5;
         PlayerSpeedCheck(0.5f);
     }
  

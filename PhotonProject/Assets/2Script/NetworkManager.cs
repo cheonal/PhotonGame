@@ -14,6 +14,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     List<int> ItemList = new List<int>();
     public Transform [] ItemPos;
+    public Transform HeartPos; //11
     void Awake()
     {
         networkManager = this;
@@ -35,8 +36,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         DisconnectPanel.SetActive(false);
         StartCoroutine("DestroyBullet");
-        Spawn();
+        PlayerSpawn();
         ItemSpawn();
+        HertSpawn();
     }
 
 
@@ -46,17 +48,20 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         foreach (GameObject Go in GameObject.FindGameObjectsWithTag("Bullet")) Go.GetComponent<PhotonView>().RPC("DestroyRPC", RpcTarget.AllBuffered);
     }
 
-    /// <summary>
-    /// 캐릭터 스폰 함수
-    /// </summary>
-    public void Spawn()
+    /// <summary> 캐릭터 스폰 함수 </summary>
+    public void PlayerSpawn()
     {
         PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f,33f),7,0), Quaternion.identity);
         RespawnPanel.SetActive(false);
     }
-    /// <summary>
-    /// 외부 클래스에서 받아오는 아이템 스폰 함수
-    /// </summary>
+    public void HertSpawn()
+    {
+        Debug.Log("2");
+        Invoke("HertSpawn", 3f);
+        Debug.Log("3");
+        PhotonNetwork.Instantiate("Heart", HeartPos.position, Quaternion.identity);
+    }
+    /// <summary> 외부 클래스에서 받아오는 아이템 스폰 함수</summary>
     public void ItemSpawn()
     {
         int ran = Random.Range(0, 5);
