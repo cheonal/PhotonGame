@@ -54,26 +54,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f,33f),7,0), Quaternion.identity);
         RespawnPanel.SetActive(false);
     }
-    public void HertSpawn()
+    /// <summary> 하트 소환 </summary>
+    void HertSpawn()
     {
-        Debug.Log("2");
-        Invoke("HertSpawn", 3f);
-        Debug.Log("3");
         PhotonNetwork.Instantiate("Heart", HeartPos.position, Quaternion.identity);
+    }
+    /// <summary> 하트를 습득했을 때 </summary>
+    public void GetHeart()
+    {
+        Invoke("HertSpawn", 3f);
     }
     /// <summary> 외부 클래스에서 받아오는 아이템 스폰 함수</summary>
     public void ItemSpawn()
     {
         int ran = Random.Range(0, 5);
         ItemList.Add(ran);
-     //   if (ItemList.Contains(ran))
-      //  {
-     //       ran = Random.Range(0, 5);
-    //    }
-    //    else
-    //    {
-            PhotonNetwork.Instantiate("Item", ItemPos[ran].position, Quaternion.identity);
-    //    }
+        PhotonNetwork.Instantiate("Item", ItemPos[ran].position, Quaternion.identity);
     }
     void Update()
     {

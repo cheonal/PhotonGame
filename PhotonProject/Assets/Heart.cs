@@ -10,10 +10,10 @@ public class Heart : MonoBehaviourPunCallbacks
     {
         if (collision.tag == "Player")
         {
+            Debug.Log("1");
+            NetworkManager.networkManager.GetHeart();
             PV.RPC("DestroyRPC", RpcTarget.AllBuffered);
-            NetworkManager.networkManager.HertSpawn();
             Player.player.HealthImage.fillAmount += 0.5f;
-            Debug.Log("11");
         }
         if (!PV.IsMine && collision.tag == "Player" && collision.GetComponent<PhotonView>().IsMine) // 느린쪽에 맞춰서 HIT판정
         {

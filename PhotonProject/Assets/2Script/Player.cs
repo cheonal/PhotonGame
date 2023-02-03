@@ -9,6 +9,8 @@ using Cinemachine;
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
     public static Player player;
+    public CrossHair crossHair;
+    public GameObject crossHairObj;
     public Rigidbody2D rigid;
     public Animator anim;
     public SpriteRenderer SR;
@@ -20,7 +22,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public Text NickNameText;
     public Image HealthImage;
     public float PlayerSpeedIncrease;
-    public Transform FirePoint;
     Vector3 Playerdir;
     int JumpCount;
     bool isGround;
@@ -45,6 +46,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     }
     void Start()
     {
+        Instantiate(crossHair, transform.position, Quaternion.identity);
+       // crossHairObj.GetComponent<CrossHair>();
         PlayerSpeed = 4;
         PlayerSpeedIncrease = 1;
         JumpCount = 2;
@@ -57,6 +60,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     }
     void Update()
     {
+        CrossHairSet();
         Playerdir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         if (PV.IsMine)
         {
@@ -114,6 +118,21 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 return;
             }
         }
+    }
+    void CrossHairSet()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Vector3 point = ray.GetPoint(1);
+        crossHair.transform.position = point;
+        /*Plane plane = new Plane(Vector2.up, Vector2.up);
+        
+        float raydistance;
+        if (plane.Raycast(ray,out raydistance))
+        {
+           
+            crossHair.transform.position = point;
+            crossHair.ScanTarget(ray);
+        }*/
     }
     public void GetItem()
     {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3249249271329868410}
   - component: {fileID: 2553602256577896313}
   - component: {fileID: 1749191909453851182}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1169419674695743094}
   - component: {fileID: 7200499040744944111}
   - component: {fileID: 953920142388703879}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 6660053095947366381}
   - component: {fileID: 8621855519538581872}
   - component: {fileID: 3212663438634024856}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HelathArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 1042387049395020073}
   - component: {fileID: 1326307168917882511}
   - component: {fileID: 7372169427800334784}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: NickNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 7732489656876739818}
   - component: {fileID: 6862879656731674652}
   - component: {fileID: 6553694714378580822}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -589,6 +589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a189ae20a339004fafdee90da59c8d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crossHair: {fileID: 787801250014266282, guid: c8ef1dc17e0323e4f846483e5b51ad83, type: 3}
+  crossHairObj: {fileID: 787801250014266325, guid: c8ef1dc17e0323e4f846483e5b51ad83, type: 3}
   rigid: {fileID: 3157339553430795240}
   anim: {fileID: 239119541289922885}
   SR: {fileID: 6823269281878724553}
@@ -596,5 +598,4 @@ MonoBehaviour:
   NickNameText: {fileID: 1042387049395020073}
   HealthImage: {fileID: 1749191909453851182}
   PlayerSpeedIncrease: 0
-  FirePoint: {fileID: 0}
   ItemTimer: 0
