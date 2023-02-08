@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 787801250014266283}
   - component: {fileID: 787801250014266324}
   - component: {fileID: 787801250014266282}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crosshairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787801250014266325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.133848, y: 22.377617, z: -8.700012}
+  m_LocalPosition: {x: 7.694534, y: 18.804358, z: -8.700012}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   dot: {fileID: 787801250014266324}
-  EnemyCheckColor: {r: 1, g: 0, b: 0, a: 0}
+  EnemyCheckColor: {r: 1, g: 0, b: 0, a: 1}
+  OriginalColor: {r: 1, g: 1, b: 1, a: 1}

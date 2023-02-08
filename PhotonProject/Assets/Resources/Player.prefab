@@ -595,6 +595,7 @@ MonoBehaviour:
   anim: {fileID: 239119541289922885}
   SR: {fileID: 6823269281878724553}
   PV: {fileID: 4586744039067227401}
+  point: {x: 0, y: 0, z: 0}
   NickNameText: {fileID: 1042387049395020073}
   HealthImage: {fileID: 1749191909453851182}
   PlayerSpeedIncrease: 0

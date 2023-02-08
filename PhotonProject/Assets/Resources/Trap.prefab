@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7423120731913102298}
   - component: {fileID: 7423120731913102293}
   - component: {fileID: 7423120731913102292}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1049317392076427234}
   - component: {fileID: 7927464379013740096}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trap (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 945667006757543148}
   - component: {fileID: 7896007944412652878}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

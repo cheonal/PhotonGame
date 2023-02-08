@@ -51,7 +51,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     /// <summary> 캐릭터 스폰 함수 </summary>
     public void PlayerSpawn()
     {
-        PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f,33f),7,0), Quaternion.identity);
+        PhotonNetwork.Instantiate("Player 1", new Vector3(Random.Range(-6f,33f),7,0), Quaternion.identity);
         RespawnPanel.SetActive(false);
     }
     /// <summary> 하트 소환 </summary>

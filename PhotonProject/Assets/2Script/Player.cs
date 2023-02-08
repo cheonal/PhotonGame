@@ -10,13 +10,14 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
     public static Player player;
     public CrossHair crossHair;
-    public GameObject crossHairObj;
     public Rigidbody2D rigid;
     public Animator anim;
     public SpriteRenderer SR;
     public PhotonView PV;
+    public Vector3 point;
     Vector3 curPos;
     Camera cam;
+
 
     [Header("플레이어 인게임")]
     public Text NickNameText;
@@ -46,8 +47,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     }
     void Start()
     {
-        Instantiate(crossHair, transform.position, Quaternion.identity);
-       // crossHairObj.GetComponent<CrossHair>();
+      //  Instantiate(crossHair, transform.position, Quaternion.identity);
         PlayerSpeed = 4;
         PlayerSpeedIncrease = 1;
         JumpCount = 2;
@@ -121,18 +121,15 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     }
     void CrossHairSet()
     {
+        // 회전입력 : 화면 상에서 마우스의 위치를 반환
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        Vector3 point = ray.GetPoint(1);
-        crossHair.transform.position = point;
-        /*Plane plane = new Plane(Vector2.up, Vector2.up);
-        
-        float raydistance;
-        if (plane.Raycast(ray,out raydistance))
-        {
-           
-            crossHair.transform.position = point;
-            crossHair.ScanTarget(ray);
-        }*/
+        point = ray.GetPoint(1);
+
+        crossHair.transform.position = point; // 크로스헤어 이동
+        crossHair.ScanTarget(ray); // 적이 있는지 판별
+        //  Ray ray = cam.ScreenPointToRay(Input.mousePosition); 
+        // point = ray.GetPoint(1);
+        //crossHair.ScanTarget(ray);
     }
     public void GetItem()
     {

@@ -7,20 +7,26 @@ public class CrossHair : MonoBehaviour
     public LayerMask layerMask;
     public SpriteRenderer dot;
     public Color EnemyCheckColor;
-    Color OriginalColor;
+    public Color OriginalColor;
+    public Vector3 cc;
+
 
     private void Start()
     {
       //  Cursor.visible = false;
-        OriginalColor = dot.color;
+      //  OriginalColor = dot.color;
     }
     private void Update()
     {
         transform.Rotate(Vector3.forward * -40 * Time.deltaTime);
+    
     }
     public void ScanTarget(Ray ray)
     {
-        if(Physics.Raycast(ray, 100, layerMask))
+
+        cc = ray.GetPoint(1);
+        RaycastHit2D hit = Physics2D.Raycast(cc, transform.position, 10f,layerMask);
+        if (hit)
         {
             dot.color = EnemyCheckColor;
         }
@@ -28,5 +34,16 @@ public class CrossHair : MonoBehaviour
         {
             dot.color = OriginalColor;
         }
+      /*  if (Physics.Raycast(ray, 100, layerMask))
+        {
+           // Debug.Log(ray.GetPoint(1));
+
+
+        }
+        else
+        {
+            Debug.Log("22");
+
+        }*/
     }
 }
