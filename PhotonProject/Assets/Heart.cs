@@ -8,15 +8,14 @@ public class Heart : MonoBehaviourPunCallbacks
     public PhotonView PV;
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && PV.IsMine)
         {
-            Debug.Log("1");
-            NetworkManager.networkManager.GetHeart();
             PV.RPC("DestroyRPC", RpcTarget.AllBuffered);
-            Player.player.HealthImage.fillAmount += 0.5f;
         }
         if (!PV.IsMine && collision.tag == "Player" && collision.GetComponent<PhotonView>().IsMine) // 느린쪽에 맞춰서 HIT판정
         {
+            NetworkManager.networkManager.GetHeart();
+            collision.GetComponent<Player>().Heal();
             PV.RPC("DestroyRPC", RpcTarget.AllBuffered);
         }
     }

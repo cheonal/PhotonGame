@@ -2,6 +2,8 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Bullet
+    - CrossHair
+    - Heart
     - Item
     - NetworkManager
     - Player
@@ -23,8 +25,6 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
-    PhotonUnityNetworking.Editor.dll:
-    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonRigidbody2DView
@@ -39,6 +39,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
+    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintPaletteClipboard
     - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
@@ -54,8 +55,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -107,6 +110,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
+    - Class: 66
+      Script: {instanceID: 0}
     - Class: 70
       Script: {instanceID: 0}
     - Class: 74
@@ -130,75 +135,79 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1478}
     - Class: 114
-      Script: {instanceID: 1616}
+      Script: {instanceID: 1620}
     - Class: 114
-      Script: {instanceID: 1806}
+      Script: {instanceID: 1810}
     - Class: 114
-      Script: {instanceID: 1848}
+      Script: {instanceID: 1852}
     - Class: 114
-      Script: {instanceID: 1854}
+      Script: {instanceID: 1858}
     - Class: 114
-      Script: {instanceID: 2474}
+      Script: {instanceID: 2478}
     - Class: 114
       Script: {instanceID: 2542}
     - Class: 114
-      Script: {instanceID: 2608}
+      Script: {instanceID: 2548}
     - Class: 114
-      Script: {instanceID: 2616}
+      Script: {instanceID: 2614}
     - Class: 114
-      Script: {instanceID: 2860}
+      Script: {instanceID: 2622}
     - Class: 114
-      Script: {instanceID: 2918}
+      Script: {instanceID: 2866}
     - Class: 114
-      Script: {instanceID: 2936}
+      Script: {instanceID: 2924}
     - Class: 114
-      Script: {instanceID: 3014}
+      Script: {instanceID: 2942}
     - Class: 114
-      Script: {instanceID: 3124}
+      Script: {instanceID: 3020}
     - Class: 114
-      Script: {instanceID: 3224}
+      Script: {instanceID: 3130}
     - Class: 114
-      Script: {instanceID: 3244}
+      Script: {instanceID: 3230}
     - Class: 114
-      Script: {instanceID: 3388}
+      Script: {instanceID: 3250}
     - Class: 114
-      Script: {instanceID: 3450}
+      Script: {instanceID: 3394}
     - Class: 114
-      Script: {instanceID: 3670}
+      Script: {instanceID: 3456}
     - Class: 114
-      Script: {instanceID: 3680}
+      Script: {instanceID: 3676}
     - Class: 114
-      Script: {instanceID: 3682}
+      Script: {instanceID: 3686}
     - Class: 114
-      Script: {instanceID: 3810}
+      Script: {instanceID: 3688}
     - Class: 114
-      Script: {instanceID: 3820}
+      Script: {instanceID: 3816}
     - Class: 114
-      Script: {instanceID: 4176}
+      Script: {instanceID: 3826}
     - Class: 114
-      Script: {instanceID: 4192}
+      Script: {instanceID: 4182}
     - Class: 114
-      Script: {instanceID: 4282}
+      Script: {instanceID: 4198}
     - Class: 114
-      Script: {instanceID: 4448}
+      Script: {instanceID: 4288}
     - Class: 114
-      Script: {instanceID: 4516}
+      Script: {instanceID: 4454}
     - Class: 114
-      Script: {instanceID: 4976}
+      Script: {instanceID: 4522}
     - Class: 114
       Script: {instanceID: 4982}
     - Class: 114
-      Script: {instanceID: 5228}
+      Script: {instanceID: 4988}
     - Class: 114
-      Script: {instanceID: 5298}
+      Script: {instanceID: 5054}
     - Class: 114
-      Script: {instanceID: 5926}
+      Script: {instanceID: 5108}
     - Class: 114
-      Script: {instanceID: 6128}
+      Script: {instanceID: 5238}
     - Class: 114
-      Script: {instanceID: 6628}
+      Script: {instanceID: 5308}
     - Class: 114
-      Script: {instanceID: 27192}
+      Script: {instanceID: 5936}
+    - Class: 114
+      Script: {instanceID: 6138}
+    - Class: 114
+      Script: {instanceID: 6638}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -230,6 +239,8 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
     - Class: 225
+      Script: {instanceID: 0}
+    - Class: 251
       Script: {instanceID: 0}
     - Class: 19719996
       Script: {instanceID: 0}
@@ -566,7 +577,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomAutoCleanupProperty
   - hash:
       serializedVersion: 2
-      Hash: d50ffaa44449dbf0286259b0ca83c781
+      Hash: c048d260f04123c06ef9f96e0b05c5de
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -594,6 +605,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.PixelPerfect.dll
     namespaceName: UnityEngine.U2D
     className: CinemachinePixelPerfect
+  - hash:
+      serializedVersion: 2
+      Hash: 5a61dadeddeb6b88d4ab23f3f0fa8379
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Heart
   - hash:
       serializedVersion: 2
       Hash: f8f5c34557f4103b6547d8f956cec6ea
@@ -1070,7 +1087,7 @@ ScriptsOnlyBuild:
     className: CinemachineMixingCamera
   - hash:
       serializedVersion: 2
-      Hash: b248c701b1a8efdbc9651216769788a8
+      Hash: 79e9acc7dc81a9bf2e29bca3cccb2cd2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkManager
@@ -1490,6 +1507,12 @@ ScriptsOnlyBuild:
     className: LayoutElementMatchSize
   - hash:
       serializedVersion: 2
+      Hash: 5a61dadeddeb6b88d4ab23f3f0fa8379
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Trap
+  - hash:
+      serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1500,6 +1523,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.SpriteShape.Runtime.dll
     namespaceName: 
     className: SpriteShapeGeometryCache
+  - hash:
+      serializedVersion: 2
+      Hash: 0790f1f9e5c1e9b64e35fecb9cd9a589
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CrossHair
   - hash:
       serializedVersion: 2
       Hash: ac1e49249c7034b7330cd0827116d70f
@@ -2082,12 +2111,6 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit.Forms
     className: UserIdUiForm
-  - hash:
-      serializedVersion: 2
-      Hash: 5a61dadeddeb6b88d4ab23f3f0fa8379
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Trap
   platform: 19
   scenePathNames:
   - Assets/0Scenes/SampleScene.unity

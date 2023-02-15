@@ -14,7 +14,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     List<int> ItemList = new List<int>();
     public Transform [] ItemPos;
-    public Transform HeartPos; //11
+    public Transform HeartPos; 
     void Awake()
     {
         networkManager = this;
@@ -37,8 +37,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         DisconnectPanel.SetActive(false);
         StartCoroutine("DestroyBullet");
         PlayerSpawn();
-        ItemSpawn();
-        HertSpawn();
     }
 
 
@@ -51,26 +49,34 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     /// <summary> 캐릭터 스폰 함수 </summary>
     public void PlayerSpawn()
     {
-        PhotonNetwork.Instantiate("Player 1", new Vector3(Random.Range(-6f,33f),7,0), Quaternion.identity);
+        PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f,33f),7,0), Quaternion.identity);
         RespawnPanel.SetActive(false);
-    }
-    /// <summary> 하트 소환 </summary>
-    void HertSpawn()
-    {
-        PhotonNetwork.Instantiate("Heart", HeartPos.position, Quaternion.identity);
     }
     /// <summary> 하트를 습득했을 때 </summary>
     public void GetHeart()
     {
         Invoke("HertSpawn", 3f);
     }
-    /// <summary> 외부 클래스에서 받아오는 아이템 스폰 함수</summary>
+    /// <summary> 하트 소환 </summary>
+    void HertSpawn()
+    {
+        PhotonNetwork.Instantiate("Heart", HeartPos.position, Quaternion.identity);
+    }
+
+    /// <summary> 아이템을 습득했을 때</summary>
+    public void GetItem()
+    {
+        Invoke("ItemSpawn", 1f);
+    }
+    /// <summary> 아이템 소환</summary>
+
     public void ItemSpawn()
     {
         int ran = Random.Range(0, 5);
         ItemList.Add(ran);
         PhotonNetwork.Instantiate("Item", ItemPos[ran].position, Quaternion.identity);
     }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected)

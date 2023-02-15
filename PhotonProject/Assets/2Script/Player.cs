@@ -8,7 +8,7 @@ using Cinemachine;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public static Player player;
+   // public static Player player;
     public CrossHair crossHair;
     public Rigidbody2D rigid;
     public Animator anim;
@@ -22,18 +22,17 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     [Header("플레이어 인게임")]
     public Text NickNameText;
     public Image HealthImage;
-    public float PlayerSpeedIncrease;
     Vector3 Playerdir;
     int JumpCount;
     bool isGround;
     bool isItem;
-    float PlayerSpeed;
+    public float PlayerSpeed;
     public float ItemTimer;
 
 
     void Awake()
     {
-        player = this;
+       // player = this;
         NickNameText.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
         NickNameText.color = PV.IsMine ? Color.green : Color.red;
 
@@ -48,16 +47,15 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
       //  Instantiate(crossHair, transform.position, Quaternion.identity);
-        PlayerSpeed = 4;
-        PlayerSpeedIncrease = 1;
+        PlayerSpeed = 8;
         JumpCount = 2;
 
         cam = Camera.main;
     }
-    public void PlayerSpeedCheck(float amount)
-    {
-        PlayerSpeedIncrease += amount;
-    }
+   // public void PlayerSpeedCheck(float amount)
+   // {
+   //     PlayerSpeedIncrease += amount;
+   // }
     void Update()
     {
         CrossHairSet();
@@ -65,7 +63,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (PV.IsMine)
         {
             float axis = Input.GetAxisRaw("Horizontal");
-            rigid.velocity = new Vector2(PlayerSpeed * PlayerSpeedIncrease * axis, rigid.velocity.y);
+            rigid.velocity = new Vector2(PlayerSpeed * axis, rigid.velocity.y);
             if (axis != 0)
             {
                 anim.SetBool("walk", true);
@@ -114,7 +112,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             if(ItemTimer < 0)
             {
                 isItem = false;
-                PlayerSpeedCheck(-0.5f);
+                PlayerSpeed -= 2f;
                 return;
             }
         }
@@ -131,13 +129,14 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         // point = ray.GetPoint(1);
         //crossHair.ScanTarget(ray);
     }
-    public void GetItem()
+    public void SpeedUp()
     {
         ItemTimer += 5;
         if (isItem)
             return;
         isItem = true;
-        PlayerSpeedCheck(0.5f);
+        PlayerSpeed += 2f;
+
     }
  
 
@@ -162,6 +161,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             //DestroyRPC는 플레이어든 총알이든 AllBuffered로 해야함
         }
     }
+    public void Heal()
+    {
+        HealthImage.fillAmount += 0.5f;
+    }
     [PunRPC]
     void DestroyRPC()
     {
@@ -171,11 +174,13 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
+            stream.SendNext(PlayerSpeed);
             stream.SendNext(transform.position);
             stream.SendNext(HealthImage.fillAmount);
         }
         else
         {
+            PlayerSpeed = (float)stream.ReceiveNext();
             curPos = (Vector3)stream.ReceiveNext();
             HealthImage.fillAmount = (float)stream.ReceiveNext();
         }
