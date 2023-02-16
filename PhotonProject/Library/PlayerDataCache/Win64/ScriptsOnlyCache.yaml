@@ -38,6 +38,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
     - UnityEditor.Tilemaps.GridBrushEditor
@@ -576,7 +577,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomAutoCleanupProperty
   - hash:
       serializedVersion: 2
-      Hash: c048d260f04123c06ef9f96e0b05c5de
+      Hash: 3c7556ca3d0353f121e5c0548a7da6c5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -1524,7 +1525,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeGeometryCache
   - hash:
       serializedVersion: 2
-      Hash: 0790f1f9e5c1e9b64e35fecb9cd9a589
+      Hash: bf3e974b953e4982ec45bbb0368d72a9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CrossHair

@@ -1,32 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class CrossHair : MonoBehaviour
+using Photon.Pun;
+using Photon.Realtime;
+public class CrossHair : MonoBehaviourPunCallbacks
 {
+    public PhotonView PV;
     public LayerMask layerMask;
     public SpriteRenderer dot;
     public Color EnemyCheckColor;
     public Color OriginalColor;
     public Vector3 cc;
 
-
-    private void Start()
+    public void ScanTarget(Vector2 vec)
     {
-      //  Cursor.visible = false;
-      //  OriginalColor = dot.color;
-    }
-    private void Update()
-    {
-        transform.Rotate(Vector3.forward * -40 * Time.deltaTime);
-    
-    }
-    public void ScanTarget(Ray ray)
-    {
-
-        cc = ray.GetPoint(1);
-        RaycastHit2D hit = Physics2D.Raycast(cc, transform.position, 10f,layerMask);
-        if (hit)
+        RaycastHit2D hit = Physics2D.Raycast(vec, transform.position, 1f, layerMask);
+        if (hit && !PV.IsMine)
         {
             dot.color = EnemyCheckColor;
         }
@@ -34,16 +23,5 @@ public class CrossHair : MonoBehaviour
         {
             dot.color = OriginalColor;
         }
-      /*  if (Physics.Raycast(ray, 100, layerMask))
-        {
-           // Debug.Log(ray.GetPoint(1));
-
-
-        }
-        else
-        {
-            Debug.Log("22");
-
-        }*/
     }
 }

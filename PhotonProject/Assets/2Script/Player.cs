@@ -8,13 +8,12 @@ using Cinemachine;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
-   // public static Player player;
     public CrossHair crossHair;
     public Rigidbody2D rigid;
     public Animator anim;
     public SpriteRenderer SR;
     public PhotonView PV;
-    public Vector3 point;
+    public Vector2 point;
     Vector3 curPos;
     Camera cam;
 
@@ -32,7 +31,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     void Awake()
     {
-       // player = this;
         NickNameText.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
         NickNameText.color = PV.IsMine ? Color.green : Color.red;
 
@@ -46,16 +44,11 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     }
     void Start()
     {
-      //  Instantiate(crossHair, transform.position, Quaternion.identity);
-        PlayerSpeed = 8;
+        PlayerSpeed = 4;
         JumpCount = 2;
 
         cam = Camera.main;
     }
-   // public void PlayerSpeedCheck(float amount)
-   // {
-   //     PlayerSpeedIncrease += amount;
-   // }
     void Update()
     {
         CrossHairSet();
@@ -119,15 +112,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     }
     void CrossHairSet()
     {
-        // 회전입력 : 화면 상에서 마우스의 위치를 반환
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        point = ray.GetPoint(1);
-
-        crossHair.transform.position = point; // 크로스헤어 이동
-        crossHair.ScanTarget(ray); // 적이 있는지 판별
-        //  Ray ray = cam.ScreenPointToRay(Input.mousePosition); 
-        // point = ray.GetPoint(1);
-        //crossHair.ScanTarget(ray);
+            // 회전입력 : 화면 상에서 마우스의 위치를 반환
+            point = cam.ScreenToWorldPoint(Input.mousePosition);
+            crossHair.transform.position = point; // 크로스헤어 이동
+            crossHair.ScanTarget(point); // 적이 있는지 판별
     }
     public void SpeedUp()
     {
